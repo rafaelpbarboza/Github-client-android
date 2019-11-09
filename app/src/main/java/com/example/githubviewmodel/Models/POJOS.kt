@@ -41,3 +41,7 @@ data class SearchDataResponse(@SerializedName("total_count")val count:Int,
             return repoId
         }
 }
+
+@Entity(primaryKeys = ["query"])
+@TypeConverters(GithubTypwConverter::class)
+data class RepoSearchResult(val query:String, val list:List<Int>, val total_count:Int, val next:Int)
